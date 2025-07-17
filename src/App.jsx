@@ -1,11 +1,9 @@
 import React from "react";
+import Timer from './components/Timer'
 
 function App() {
   return (
-    <div>
-      <div>App</div>
-      <button>ok</button>
-    </div>
+    <Timer/>
   );
 }
 
