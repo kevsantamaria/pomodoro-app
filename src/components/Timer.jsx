@@ -12,7 +12,8 @@ function Timer() {
 
     if (isActive) {
       timer = setInterval(() => {
-        setTime((prev) => { // decrement the time every second
+        setTime((prev) => {
+          // decrement the time every second
           if (prev === 1) {
             handleTimerEnd();
             return 0;
@@ -57,18 +58,36 @@ function Timer() {
     <section className="bg-white h-screen flex flex-col gap-5 items-center justify-center">
       <article className="fixed top-5 right-5 bg-red-800 rounded-xl p-2">
         <h2 className="font-bold text-white text-xl">
-          Sessions Completed:{" "}
-          <span className="font-normal">{numOfSession}</span>
+          Sessions Completed:
+          <span className="font-normal">{" " + numOfSession}</span>
         </h2>
       </article>
       <article className="flex gap-6">
-        <button className=" bg-gray-700 p-2.5 rounded-xl text-white cursor-pointer font-bold">
+        <button
+          className=" bg-gray-700 p-2.5 rounded-xl text-white cursor-pointer font-bold"
+          onClick={() => {
+            setTypeOfSession("focus");
+            setTime(25 * 60);
+          }}
+        >
           Focus
         </button>
-        <button className=" bg-gray-700 p-2.5 rounded-xl text-white cursor-pointer font-bold">
+        <button
+          className=" bg-gray-700 p-2.5 rounded-xl text-white cursor-pointer font-bold"
+          onClick={() => {
+            setTypeOfSession("shortBreak");
+            setTime(5 * 60);
+          }}
+        >
           Short Break
         </button>
-        <button className=" bg-gray-700 p-2.5 rounded-xl text-white cursor-pointer font-bold">
+        <button
+          className=" bg-gray-700 p-2.5 rounded-xl text-white cursor-pointer font-bold"
+          onClick={() => {
+            setTypeOfSession("longBreak");
+            setTime(15 * 60);
+          }}
+        >
           Long Break
         </button>
       </article>
