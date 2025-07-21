@@ -41,7 +41,7 @@ export function TimerContextProvider(props) {
       value={{
         time,
         setTime,
-       // typeOfSession,
+        typeOfSession,
         setTypeOfSession,
         numOfSession,
         isActive,
