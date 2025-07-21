@@ -4,9 +4,7 @@ import { TimerContext } from "../contexts/TimerContext";
 import SessionButton from "./SessionButton";
 
 function Timer() {
-  const [isActive, setIsActive] = useState(false);
-  const { typeOfSession, numOfSession, setTime, handleTimerEnd, time } =
-    useContext(TimerContext);
+  const { time, setTime, numOfSession, isActive, setIsActive, handleTimerEnd, handleReset } = useContext(TimerContext);
 
   useEffect(() => {
     let timer;
@@ -25,17 +23,6 @@ function Timer() {
     }
     return () => clearInterval(timer);
   }, [isActive]);
-
-  const handleReset = () => {
-    setIsActive(false);
-    setTime(
-      typeOfSession === "focus"
-        ? 25 * 60
-        : typeOfSession === "shortBreak"
-        ? 5 * 60
-        : 15 * 60
-    );
-  };
 
   return (
     <section className="bg-white h-screen flex flex-col gap-5 items-center justify-center">
@@ -57,7 +44,7 @@ function Timer() {
           {Math.floor(time / 60)}:{String(time % 60).padStart(2, "00")}
         </span>
       </article>
-      
+
       <article className="flex gap-3">
         <span
           className="border p-1.5 rounded-xl cursor-pointer"

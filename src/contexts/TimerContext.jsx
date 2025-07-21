@@ -5,6 +5,7 @@ export function TimerContextProvider(props) {
   const [time, setTime] = useState(25 * 60);
   const [typeOfSession, setTypeOfSession] = useState("focus"); // or 'shortBreak', or 'longBreak'
   const [numOfSession, setNumOfSession] = useState(0);
+  const [isActive, setIsActive] = useState(false);
 
   const handleTimerEnd = () => {
     setIsActive(false);
@@ -24,15 +25,29 @@ export function TimerContextProvider(props) {
     }
   };
 
+  const handleReset = () => {
+    setIsActive(false);
+    setTime(
+      typeOfSession === "focus"
+        ? 25 * 60
+        : typeOfSession === "shortBreak"
+        ? 5 * 60
+        : 15 * 60
+    );
+  };
+
   return (
     <TimerContext.Provider
       value={{
         time,
         setTime,
-        typeOfSession,
+       // typeOfSession,
         setTypeOfSession,
-        handleTimerEnd,
         numOfSession,
+        isActive,
+        setIsActive,
+        handleTimerEnd,
+        handleReset,
       }}
     >
       {props.children}

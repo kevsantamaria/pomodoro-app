@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { TimerContext } from "../contexts/TimerContext";
 
 function SessionButton({ type, thisTime, text }) {
-  const { setTime, typeOfSession, setTypeOfSession } = useContext(TimerContext);
+  const { setTime, setTypeOfSession } = useContext(TimerContext);
 
   // const currentSession = (typeOfSession) => {
   //   typeOfSession === "focus"
