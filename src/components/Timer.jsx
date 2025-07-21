@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { CirclePlay, TimerReset, CirclePause } from "lucide-react";
+import { TimerContext } from "../contexts/TimerContext";
+import SessionButton from "./SessionButton";
 
 function Timer() {
-  const [time, setTime] = useState(25 * 60);
   const [isActive, setIsActive] = useState(false);
-  const [typeOfSession, setTypeOfSession] = useState("focus"); // or 'shortBreak', or 'longBreak'
-  const [numOfSession, setNumOfSession] = useState(0);
+  const { typeOfSession, numOfSession, setTime, handleTimerEnd, time } =
+    useContext(TimerContext);
 
   useEffect(() => {
     let timer;
@@ -24,24 +25,6 @@ function Timer() {
     }
     return () => clearInterval(timer);
   }, [isActive]);
-
-  const handleTimerEnd = () => {
-    setIsActive(false);
-    if (typeOfSession === "focus") {
-      const nextSession = numOfSession + 1;
-      if (nextSession % 4 === 0) {
-        setTypeOfSession("longBreak");
-        setTime(15 * 60);
-      } else {
-        setTypeOfSession("shortBreak");
-        setTime(5 * 60);
-      }
-      setNumOfSession(nextSession);
-    } else {
-      setTypeOfSession("focus");
-      setTime(25 * 60);
-    }
-  };
 
   const handleReset = () => {
     setIsActive(false);
@@ -62,40 +45,19 @@ function Timer() {
           <span className="font-normal">{" " + numOfSession}</span>
         </h2>
       </article>
-      <article className="flex gap-6">
-        <button
-          className=" bg-gray-700 p-2.5 rounded-xl text-white cursor-pointer font-bold"
-          onClick={() => {
-            setTypeOfSession("focus");
-            setTime(25 * 60);
-          }}
-        >
-          Focus
-        </button>
-        <button
-          className=" bg-gray-700 p-2.5 rounded-xl text-white cursor-pointer font-bold"
-          onClick={() => {
-            setTypeOfSession("shortBreak");
-            setTime(5 * 60);
-          }}
-        >
-          Short Break
-        </button>
-        <button
-          className=" bg-gray-700 p-2.5 rounded-xl text-white cursor-pointer font-bold"
-          onClick={() => {
-            setTypeOfSession("longBreak");
-            setTime(15 * 60);
-          }}
-        >
-          Long Break
-        </button>
+
+      <article className="flex gap-6 bg-gray-700 rounded-xl px-5">
+        <SessionButton type={"focus"} thisTime={25 * 60} text={"Focus"} />
+        <SessionButton type={"shortBreak"} thisTime={5 * 60} text={"Short Break"} />
+        <SessionButton type={"longBreak"} thisTime={15 * 60} text={"Long Break"} />
       </article>
-      <article className="border-b-gray-700 m-5">
+
+      <article className="border-b-gray-700 m-5 bg-red-800 text-white p-15 rounded-full">
         <span className="text-7xl">
           {Math.floor(time / 60)}:{String(time % 60).padStart(2, "00")}
         </span>
       </article>
+      
       <article className="flex gap-3">
         <span
           className="border p-1.5 rounded-xl cursor-pointer"
