@@ -1,7 +1,8 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { CirclePlay, TimerReset, CirclePause } from "lucide-react";
 import { TimerContext } from "../contexts/TimerContext";
 import SessionButton from "./SessionButton";
+import AddTime from './AddTime'
 
 function Timer() {
   const { time, setTime, numOfSession, isActive, setIsActive, handleTimerEnd, handleReset } = useContext(TimerContext);
@@ -46,30 +47,10 @@ function Timer() {
       </article>
 
       <article className="flex gap-3">
-        <span
-          className="border p-1.5 rounded-xl cursor-pointer"
-          onClick={() => setTime(time + 25 * 60)}
-        >
-          + 25 min
-        </span>
-        <span
-          className="border p-1.5 rounded-xl cursor-pointer"
-          onClick={() => setTime(time + 10 * 60)}
-        >
-          + 10 min
-        </span>
-        <span
-          className="border p-1.5 rounded-xl cursor-pointer"
-          onClick={() => setTime(time + 5 * 60)}
-        >
-          + 5 min
-        </span>
-        <span
-          className="border p-1.5 rounded-xl cursor-pointer"
-          onClick={() => setTime(time + 1 * 60)}
-        >
-          + 1 min
-        </span>
+        <AddTime text={"+ 25 min"} timeToAdd={time + 25 * 60}/>
+        <AddTime text={"+ 10 min"} timeToAdd={time + 10 * 60}/>
+        <AddTime text={"+ 5 min"} timeToAdd={time + 5 * 60}/>
+        <AddTime text={"+ 1 min"} timeToAdd={time + 1 * 60}/>
       </article>
       <article className="flex gap-4">
         <button
