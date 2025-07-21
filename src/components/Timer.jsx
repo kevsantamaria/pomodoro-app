@@ -27,7 +27,7 @@ function Timer() {
 
   return (
     <section className="bg-white h-screen flex flex-col gap-5 items-center justify-center">
-      <article className="fixed top-5 right-5 bg-red-800 rounded-xl p-2">
+      <article className="absolute top-5 right-5 bg-red-800 rounded-xl p-2">
         <h2 className="font-bold text-white text-xl">
           Sessions Completed:
           <span className="font-normal">{" " + numOfSession}</span>
