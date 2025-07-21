@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+:root {
+    --primary: #b4202a;
+    --background: #ddfab8;
+}
+
+.font-pixel {
+    font-family: 'Press Start 2P', cursive;
+  }
+  

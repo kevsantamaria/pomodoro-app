@@ -6,7 +6,7 @@ function AddTime({ text, timeToAdd }) {
 
   return (
     <span
-      className="border p-1.5 rounded-xl cursor-pointer"
+      className="border-2 border-gray-900 text-gray-900 font-pixel text-sm p-1.5 cursor-pointer"
       onClick={() => setTime(timeToAdd)} // time + 25 * 60 || time + 10 * 60 || time + 5 * 60 || time + 1 * 60
     >
       {text}
