@@ -1,8 +1,9 @@
 import { useEffect, useContext } from "react";
-import { CirclePlay, TimerReset, CirclePause } from "lucide-react";
+import { CirclePlay, TimerReset, CirclePause, Key } from "lucide-react";
 import { TimerContext } from "../contexts/TimerContext";
 import SessionSwitch from "./SessionSwitch";
 import AddTime from "./AddTime";
+import Pomodoro from "../assets/pomodoro-resize.png";
 
 function Timer() {
   const {
@@ -33,9 +34,16 @@ function Timer() {
     return () => clearInterval(timer);
   }, [isActive]);
 
+  const addTimeProps = [
+    { text: "+ 25", timeToAdd: time + 25 * 60 },
+    { text: "+ 10", timeToAdd: time + 10 * 60 },
+    { text: "+ 5", timeToAdd: time + 5 * 60 },
+    { text: "+ 1", timeToAdd: time + 1 * 60 },
+  ];
+
   return (
-    <section className="bg-[var(--background)] h-screen flex flex-col gap-5 items-center justify-center">
-      <article className="absolute top-5 right-5 bg-[var(--primary)] p-4 border-4 border-gray-900 shadow-[4px_4px_0_0_#101828] font-pixel text-white text-xs uppercase select-none">
+    <section className="bg-[var(--background)] h-screen w-[70%] m-auto sm:w-auto flex flex-col gap-5 items-center justify-center">
+      <article className="absolute top-5 right-5 bg-[var(--primary)] p-3 border-4 border-[var(--accent)] shadow-[4px_4px_0_0_#102542] font-pixel text-white text-xs uppercase select-none">
         <h2 className="font-bold leading-tight">
           Sessions Completed:
           <span className="font-normal">{" " + numOfSession}</span>
@@ -46,23 +54,33 @@ function Timer() {
         <SessionSwitch />
       </article>
 
-      <article className="m-5 bg-[var(--primary)] text-white p-6 border-4 border-gray-900 shadow-[4px_4px_0_0_#111827] font-pixel select-none inline-block text-center">
-        <span className="text-7xl leading-none block">
-          {String(Math.floor(time / 60)).padStart(2, "0")}:
-          {String(time % 60).padStart(2, "0")}
-        </span>
+      <article className="font-pixel select-none py-6">
+        <div className="relative flex justify-center items-center h-64 w-64 mx-auto">
+          <img
+            src={Pomodoro}
+            alt="Pomodoro timer"
+            className="absolute h-full w-full object-contain"
+          />
+
+          <div className="absolute flex flex-col items-center justify-center w-full h-full z-10">
+            <span className="text-6xl sm:text-7xl text-white drop-shadow-lg">
+              {String(Math.floor(time / 60)).padStart(2, "0")}:
+              {String(time % 60).padStart(2, "0")}
+            </span>
+          </div>
+        </div>
       </article>
 
-      <article className="flex gap-3">
-        <AddTime text={"+ 25 min"} timeToAdd={time + 25 * 60} />
-        <AddTime text={"+ 10 min"} timeToAdd={time + 10 * 60} />
-        <AddTime text={"+ 5 min"} timeToAdd={time + 5 * 60} />
-        <AddTime text={"+ 1 min"} timeToAdd={time + 1 * 60} />
+      <article className="flex justify-center items-center gap-3">
+        {addTimeProps.map(({ text, timeToAdd }) => (
+          <AddTime key={text} text={text} timeToAdd={timeToAdd} />
+        ))}
       </article>
+      
       <article className="flex gap-4">
         <button
-          className="flex items-center gap-2 bg-red-800 text-white p-3 font-pixel text-xs uppercase 
-               border-4 border-gray-900 shadow-[4px_4px_0_0_#111827] 
+          className="cursor-pointer flex items-center gap-2 bg-[var(--primary)] text-white p-3 font-pixel text-xs uppercase 
+               border-4 border-[var(--accent)] shadow-[4px_4px_0_0_#102542] 
                select-none transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
           onClick={() => {
             setIsActive(!isActive);
@@ -73,8 +91,8 @@ function Timer() {
         </button>
 
         <button
-          className="flex items-center gap-2 bg-red-800 text-white p-3 font-pixel text-xs uppercase 
-               border-4 border-gray-900 shadow-[4px_4px_0_0_#111827] 
+          className="cursor-pointer flex items-center gap-2 bg-[var(--primary)] text-white p-3 font-pixel text-xs uppercase 
+               border-4 border-[var(--accent)] shadow-[4px_4px_0_0_#102542] 
                select-none transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
           onClick={handleReset}
         >
