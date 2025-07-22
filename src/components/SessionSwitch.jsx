@@ -13,7 +13,7 @@ function SessionSwitch() {
   const currentIndex = sessionSwitchProps.findIndex((opt) => opt.type === typeOfSession);
 
   return (
-    <section className="relative bg-[var(--accent)] p-2 px-5 flex space-x-10 border-4 border-[var(--accent)] shadow-[4px_4px_0_0_#102542] font-pixel select-none uppercase text-xs">
+    <section className="relative bg-[var(--accent)] p-2 px-5 flex mt-15 space-x-10 border-4 border-[var(--accent)] shadow-[4px_4px_0_0_#102542] font-pixel select-none uppercase sm:text-xs text-[12px]">
       {/* Slider */}
       <div
         className="absolute left-1 top-1 bg-[var(--primary)] transition-transform duration-300 ease-in-out"
