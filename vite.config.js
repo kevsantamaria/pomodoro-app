@@ -5,5 +5,6 @@ import svgr from '@svgr/rollup'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/pomodoro-app/',
   plugins: [react(), tailwindcss(), svgr()],
 })
