@@ -1,4 +1,4 @@
-# Pomodoro App
+# README
 
 ## Descripción
 Aplicación Pomodoro desarrollada como proyecto de aprendizaje de React. Este proyecto fue inspirado por [roadmap.sh](https://roadmap.sh/projects/pomodoro-timer) como ejercicio práctico para aprender desarrollo frontend. Esta herramienta te ayuda a gestionar tu tiempo utilizando la técnica Pomodoro, alternando entre períodos de trabajo y descanso.
