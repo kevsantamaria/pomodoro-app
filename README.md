@@ -1,12 +1,23 @@
-# React + Vite
+# Pomodoro App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
+Aplicación Pomodoro desarrollada como proyecto de aprendizaje de React. Esta herramienta te ayuda a gestionar tu tiempo utilizando la técnica Pomodoro, alternando entre períodos de trabajo y descanso.
 
-Currently, two official plugins are available:
+**URL del proyecto:** [https://kevsantamaria.github.io/pomodoro-app](https://kevsantamaria.github.io/pomodoro-app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Características principales
+- Temporizador Pomodoro (25 minutos trabajo / 5 minutos descanso / 15 minutos descanso cada 4 sesiones de trabajo)
+- Temporizador personalizable (aumenta duración de sesiones)
+- Notificación al finalizar cada período (no sonora)
+- Diseño responsive
+- Interfaz estilo pixelart
 
-## Expanding the ESLint configuration
+## Tecnologías utilizadas
+- ⚛️ React (creado con Vite)
+- 🚀 Bun como runtime y package manager
+- 🎨 Tailwind CSS para estilos
+- 📦 GitHub Pages para deployment
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+Creado con ❤️ por [Kevin Santamaria](https://github.com/kevsantamaria)
