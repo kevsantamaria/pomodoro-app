@@ -1,27 +1,44 @@
 import { createContext, useState } from "react";
-export const TimerContext = createContext();
+import { Bounce, toast } from "react-toastify";
 
-export function TimerContextProvider(props) {
-  const [time, setTime] = useState(25 * 60);
+const TimerContext = createContext();
+
+function TimerContextProvider({ children }) {
+  const [time, setTime] = useState(5 * 1);
   const [typeOfSession, setTypeOfSession] = useState("focus"); // or 'shortBreak', or 'longBreak'
   const [numOfSession, setNumOfSession] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
+  const notification = () => {
+    toast.success("Session completed! :D", {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
+  };
+
   const handleTimerEnd = () => {
     setIsActive(false);
+    notification();
     if (typeOfSession === "focus") {
       const nextSession = numOfSession + 1;
       if (nextSession % 4 === 0) {
         setTypeOfSession("longBreak");
-        setTime(15 * 60);
+        setTime(3 * 1);
       } else {
         setTypeOfSession("shortBreak");
-        setTime(5 * 60);
+        setTime(2 * 1);
       }
       setNumOfSession(nextSession);
     } else {
       setTypeOfSession("focus");
-      setTime(25 * 60);
+      setTime(5 * 1);
     }
   };
 
@@ -29,10 +46,10 @@ export function TimerContextProvider(props) {
     setIsActive(false);
     setTime(
       typeOfSession === "focus"
-        ? 25 * 60
+        ? 5 * 1
         : typeOfSession === "shortBreak"
-        ? 5 * 60
-        : 15 * 60
+        ? 2 * 1
+        : 3 * 1
     );
   };
 
@@ -50,7 +67,9 @@ export function TimerContextProvider(props) {
         handleReset,
       }}
     >
-      {props.children}
+      {children}
     </TimerContext.Provider>
   );
 }
+
+export { TimerContext, TimerContextProvider };
