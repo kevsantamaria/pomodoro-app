@@ -4,7 +4,7 @@ import { Bounce, toast } from "react-toastify";
 const TimerContext = createContext();
 
 function TimerContextProvider({ children }) {
-  const [time, setTime] = useState(5 * 1);
+  const [time, setTime] = useState(25 * 60);
   const [typeOfSession, setTypeOfSession] = useState("focus"); // or 'shortBreak', or 'longBreak'
   const [numOfSession, setNumOfSession] = useState(0);
   const [isActive, setIsActive] = useState(false);
@@ -30,15 +30,15 @@ function TimerContextProvider({ children }) {
       const nextSession = numOfSession + 1;
       if (nextSession % 4 === 0) {
         setTypeOfSession("longBreak");
-        setTime(3 * 1);
+        setTime(15 * 60);
       } else {
         setTypeOfSession("shortBreak");
-        setTime(2 * 1);
+        setTime(5 * 60);
       }
       setNumOfSession(nextSession);
     } else {
       setTypeOfSession("focus");
-      setTime(5 * 1);
+      setTime(25 * 60);
     }
   };
 
@@ -46,10 +46,10 @@ function TimerContextProvider({ children }) {
     setIsActive(false);
     setTime(
       typeOfSession === "focus"
-        ? 5 * 1
+        ? 25 * 60
         : typeOfSession === "shortBreak"
-        ? 2 * 1
-        : 3 * 1
+        ? 5 * 60
+        : 15 * 60
     );
   };
 
