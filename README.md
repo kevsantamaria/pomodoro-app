@@ -8,7 +8,7 @@ Aplicación Pomodoro desarrollada como proyecto de aprendizaje de React. Este pr
 ## Características principales
 - Temporizador Pomodoro (25 minutos trabajo / 5 minutos descanso / 15 minutos descanso cada 4 sesiones de trabajo)
 - Temporizador personalizable (aumenta duración de sesiones)
-- Notificación al finalizar cada período (no sonora)
+- Notificación sonora al finalizar cada período
 - Diseño responsive
 - Interfaz estilo pixelart
 
