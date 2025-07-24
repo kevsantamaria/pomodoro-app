@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import { Bounce, toast } from "react-toastify";
+import notificationSound from '../assets/bell-notification.mp3'
 
 const TimerContext = createContext();
 
@@ -9,7 +10,13 @@ function TimerContextProvider({ children }) {
   const [numOfSession, setNumOfSession] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
+  const notificationAudio = () => {
+    const audio = new Audio(notificationSound);
+    audio.play().catch(e => console.log("Error al reproducir el sonido: ", e));
+  } 
+
   const notification = () => {
+    notificationAudio();
     toast.success("Session completed! :D", {
       position: "top-left",
       autoClose: 5000,
