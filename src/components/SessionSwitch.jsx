@@ -7,7 +7,7 @@ function SessionSwitch() {
 
   const sessionSwitchProps = [
     { type: "focus", time: 25 * 60, text: "Focus" },
-    { type: "shortBreak", time: 5 * 1, text: "Short Break" },
+    { type: "shortBreak", time: 5 * 60, text: "Short Break" },
     { type: "longBreak", time: 15 * 60, text: "Long Break" },
   ];
 
