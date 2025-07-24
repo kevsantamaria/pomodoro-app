@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useRef } from "react";
 import { TimerContext } from "../contexts/TimerContext";
 import SessionSwitch from "./SessionSwitch";
 import AddTime from "./AddTime";
@@ -14,19 +14,33 @@ function Timer() {
     setIsActive,
     handleTimerEnd,
     handleReset,
+    startTime,
+    setStartTime,
   } = useContext(TimerContext);
+  const durationRef = useRef(time);
 
   useEffect(() => {
     let timer;
 
-    if (isActive) {
+    if (isActive && startTime) {
+      durationRef.current = time;
       timer = setInterval(() => {
-        setTime((prev) => (prev > 0 ? prev - 1 : 0));
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        const newTimeLeft = durationRef.current - elapsed;
+
+        if (newTimeLeft <= 0) {
+          clearInterval(timer);
+          setTime(0);
+          setIsActive(false);
+          handleTimerEnd();
+        } else {
+          setTime(newTimeLeft);
+        }
       }, 1000);
     }
 
     return () => clearInterval(timer);
-  }, [isActive]);
+  }, [isActive, startTime]);
 
   // Effect to handle when the timer reaches zero
   useEffect(() => {
@@ -86,7 +100,10 @@ function Timer() {
                border-4 border-[var(--accent)] shadow-[4px_4px_0_0_#102542] 
                select-none transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
           onClick={() => {
-            setIsActive(!isActive);
+            setIsActive((prev) => {
+              if (!prev) setStartTime(Date.now()); // Si se está iniciando (de pausa a activo)
+              return !prev; // Alterna el estado
+            });
           }}
         >
           {isActive ? "Pause" : "Play"}

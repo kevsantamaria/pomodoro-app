@@ -9,6 +9,7 @@ function TimerContextProvider({ children }) {
   const [typeOfSession, setTypeOfSession] = useState("focus"); // or 'shortBreak', or 'longBreak'
   const [numOfSession, setNumOfSession] = useState(0);
   const [isActive, setIsActive] = useState(false);
+  const [startTime, setStartTime] = useState(null);
 
   const notificationAudio = () => {
     const audio = new Audio(notificationSound);
@@ -72,6 +73,8 @@ function TimerContextProvider({ children }) {
         setIsActive,
         handleTimerEnd,
         handleReset,
+        startTime,
+        setStartTime,
       }}
     >
       {children}
