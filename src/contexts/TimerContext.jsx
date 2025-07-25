@@ -18,6 +18,13 @@ function TimerContextProvider({ children }) {
 
   const notification = () => {
     notificationAudio();
+
+    if (Notification.permission === "granted") {
+      new Notification("Pomodoro's session completed!", {
+        body: "Time to take a break or start the next session.",
+      });
+    }
+
     toast.success("Session completed! :D", {
       position: "top-left",
       autoClose: 5000,

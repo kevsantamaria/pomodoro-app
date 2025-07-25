@@ -20,6 +20,9 @@ function Timer() {
   const durationRef = useRef(time);
 
   useEffect(() => {
+    if (Notification.permission !== "granted") {
+      Notification.requestPermission();
+    }
     let timer;
 
     if (isActive && startTime) {
