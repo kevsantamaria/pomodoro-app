@@ -9,7 +9,7 @@ The app helps you manage your time efficiently using the Pomodoro Technique — 
 ![Pomate Preview](./public/pomate-screenshot.webp)
 
 **Live Demo:** 
-https://kevsantamaria.github.io/pomodoro-app
+https://pomate.netlify.app
 
 ## ⚡ Key Features
 
