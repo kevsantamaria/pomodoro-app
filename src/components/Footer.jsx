@@ -5,7 +5,9 @@ function Footer() {
         Made by{" "}
         <a
           href="https://github.com/kevsantamaria"
-          className="font-bold hover:underline active:underline cursor-pointer text-blue-500"
+          className="font-bold underline cursor-pointer text-blue-500"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{ textDecorationThickness: "2px" }}
         >
           Kevin Santamaria
