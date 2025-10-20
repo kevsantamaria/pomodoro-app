@@ -1,23 +1,55 @@
-# pomodoro-app
+# 🍅 Pomate
 
-## Descripción
-Aplicación Pomodoro desarrollada como proyecto de aprendizaje de React. Este proyecto fue inspirado por [roadmap.sh](https://roadmap.sh/projects/pomodoro-timer) como ejercicio práctico para aprender desarrollo frontend. Esta herramienta te ayuda a gestionar tu tiempo utilizando la técnica Pomodoro, alternando entre períodos de trabajo y descanso.
+Pomate is a productivity timer built with React. This project was created to strengthen frontend development skills through hands-on practice.
 
-**URL del proyecto:** [https://kevsantamaria.github.io/pomodoro-app](https://kevsantamaria.github.io/pomodoro-app)
+The app helps you manage your time efficiently using the Pomodoro Technique — alternating between focused work sessions and short breaks.
 
-## Características principales
-- Temporizador Pomodoro (25 minutos trabajo / 5 minutos descanso / 15 minutos descanso cada 4 sesiones de trabajo)
-- Temporizador personalizable (aumenta duración de sesiones)
-- Notificación sonora al finalizar cada período
-- Diseño responsive
-- Interfaz estilo pixelart
+## 📸 Preview
 
-## Tecnologías utilizadas
-- ⚛️ React (creado con Vite)
-- 🚀 Bun como runtime y package manager
-- 🎨 Tailwind CSS para estilos
-- 📦 GitHub Pages para deployment
+![Pomate Preview](./public/pomate-screenshot.webp)
+
+**Live Demo:** 
+https://kevsantamaria.github.io/pomodoro-app
+
+## ⚡ Key Features
+
+- 25 minutes of work, 5 minutes of short break, and a 15-minute long break after every 4 sessions.
+- Adjust the length of the sessions to fit your workflow.
+- Sound notifications when a session ends.
+- Fun interface with a pixel art aesthetic.
+
+## 🧩 Tech Stack
+
+- React (bootstrapped with Vite)
+- Bun as runtime and package manager
+- Tailwind CSS for styling
+
+## 🛠️ Installation & Setup
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/kevsantamaria/pomodoro-app.git
+cd pomodoro-app
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Start the development server
+
+```bash
+npm run dev
+```
+4. Open in your browser
+
+```
+http://localhost:5173
+```
 
 ---
 
-Creado con ❤️ por [Kevin Santamaria](https://github.com/kevsantamaria)
+Build with ❤️ by Kevin Santamaria
