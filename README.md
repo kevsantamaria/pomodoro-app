@@ -52,4 +52,4 @@ http://localhost:5173
 
 ---
 
-Build with ❤️ by Kevin Santamaria
+Build with ❤️ by <a href="https://github.com/kevsantamaria">Kevin Santamaria</a>
